@@ -6,7 +6,6 @@ function HomePage() {
         var input_password = document.getElementById('input_password');
         var button_password = document.getElementById('button_password');
         var button_show = document.getElementById('button_show');
-        var button_register_interface = document.getElementById('button_register_interface');
 
         if (input_password.style.display === 'none') {
             input_password.style.display = 'block';
