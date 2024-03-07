@@ -22,7 +22,12 @@ function User(){
                     {/* Aqui você pode adicionar as linhas da tabela dinamicamente, se necessário */}
                 </tbody>
             </table>
-
+            </div>
+            
+            <div className='widgets_container'>
+                <button>Inserir Entrega</button><br></br>
+                <button>Atualizar Entrega</button><br></br>
+                <p>Previsão Retorno Caminhões</p>
             </div>
         </body>
         
