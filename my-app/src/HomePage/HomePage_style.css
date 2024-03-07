@@ -1,0 +1,32 @@
+.container{
+    font-size: medium;
+    font-family: 'LEMON MILK', sans-serif;
+}
+button{
+    color:black;
+    background-color: #E38020;
+    width: 100%;
+    height: 40px;
+    font-family: 'LEMON MILK', sans-serif;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Isso garante que o corpo ocupe toda a altura da janela de visualização */
+    margin: 0;
+    background-color: #323232;
+}
+h2 {
+    color:white;
+}
+input{
+    width: 97%;
+    height: 20px;
+}
+.button_password{
+    width: 100%;
+    height: 29px;
+}
