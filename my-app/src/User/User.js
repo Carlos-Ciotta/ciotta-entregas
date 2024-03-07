@@ -4,9 +4,33 @@ import React from 'react';
 function User(){
     return(
         <body>
+            <div className='top_header'>
+                <img src='/Logo horizontal.png'/>
+                <button className="button_help">Ajuda</button>
+            </div>
             <div className='table_container'>
             <table>
                 <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Nome Cliente</th>
+                        <th>Bairro</th>
+                        <th>Situação</th>
+                        <th>Data Entrega</th>
+                        <th>Hora Entrega</th>
+                        <th>Observação</th>
+                        <th>Vendedor</th>
+                    </tr>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Nome Cliente</th>
+                        <th>Bairro</th>
+                        <th>Situação</th>
+                        <th>Data Entrega</th>
+                        <th>Hora Entrega</th>
+                        <th>Observação</th>
+                        <th>Vendedor</th>
+                    </tr>
                     <tr>
                         <th>Pedido</th>
                         <th>Nome Cliente</th>
@@ -27,6 +51,7 @@ function User(){
             <div className='widgets_container'>
                 <button>Inserir Entrega</button><br></br>
                 <button>Atualizar Entrega</button><br></br>
+                <button>Ver Entregues</button><br></br>
                 <p>Previsão Retorno Caminhões</p>
             </div>
         </body>

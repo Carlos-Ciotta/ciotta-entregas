@@ -11,6 +11,9 @@ button{
     font-family: 'LEMON MILK', sans-serif;
     margin-bottom: 5px;
     margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 h2 {
     color:white;
