@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Form/Form_style.css';
 
 function Form_insert(){
-    return(
-        <div className="container">
+    const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    var button_open = document.getElementById('openModal');
+    button_open.style.display = 'none'
+    setIsOpen(true);
+
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    var button_open = document.getElementById('openModal');
+    button_open.style.display = 'block'
+  };
+
+  return (
+    <div>
+      <button id="openModal" onClick={openModal} style={{display:'block'}}>Open the modal</button>
+
+      {isOpen && (
+        <div className="modal">
+          <div className="container">
+            <button id="closeModal" className="modal-close-btn" onClick={closeModal}>Close</button>
             <label htmlFor="id_input">Número do Pedido:</label>
             <input type="text" id="id_input"/>
 
@@ -41,17 +62,17 @@ function Form_insert(){
                 <option value="Expoente">Expoente</option>
                 <option value="Monte Castelo">Monte Castelo</option>
                 <option value="Cordilheira Alta">Cordilheira Alta</option>
-            </select>
+            </select><br></br>
 
-            <label htmlFor="radio_delivery_time">Horário de Entrega</label>
+            <label htmlFor="radio_delivery_time">Horário de Entrega</label><br></br>
             <label>
                 <input type="radio" id="radOpcao" value="Manhã" name="opcaoRadio1"/> Manhã
             </label>
             <label>
                 <input type="radio" id="radOpcao" value = "Tarde" name="opcaoRadio1"/> Tarde
-            </label>
+            </label><br></br>
 
-            <label htmlFor="radio_sales_person">Vendedor</label>
+            <label htmlFor="radio_sales_person">Vendedor</label><br></br>
             <label>
                 <input type="radio" id="opcaoRadio" value="Terezinha" name="opcaoRadio" class="radio-group"/> Terezinha
             </label>
@@ -69,17 +90,19 @@ function Form_insert(){
             </label>
             <label>
                 <input type="radio" id="opcaoRadio" value="Carlos Eduardo" name="opcaoRadio"class="radio-group"/> Carlos Eduardo
-            </label>
+            </label><br></br>
 
-            <label htmlFor="datePicker">Data de Entrega</label>
+            <label htmlFor="datePicker">Data de Entrega</label><br></br>
             <input type="date" id="datePicker" /><br />
             <label htmlFor="observacao_input">Observações (opcional):</label>
             <input type="text" id="observacao_input"/>
 
-            <button id="enviarBtn" className="button" onClick={postEntregas} style={{ float: 'right' }}>Enviar Entrega</button>
+            <button id="enviarBtn" className="button" style={{ float: 'right' }}>Enviar Entrega</button>
+          </div>
         </div>
-
-    );
+      )}
+    </div>
+  );
 }
 
 export default Form_insert;
