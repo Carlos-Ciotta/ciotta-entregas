@@ -64,33 +64,17 @@ function Form_insert(){
                 <option value="Cordilheira Alta">Cordilheira Alta</option>
             </select><br></br>
 
-            <label htmlFor="radio_delivery_time">Horário de Entrega</label><br></br>
-            <label>
+            <label>Horário de Entrega</label><br></br>
                 <input type="radio" id="radOpcao" value="Manhã" name="opcaoRadio1"/> Manhã
-            </label>
-            <label>
-                <input type="radio" id="radOpcao" value = "Tarde" name="opcaoRadio1"/> Tarde
-            </label><br></br>
+                <input type="radio" id="radOpcao" value = "Tarde" name="opcaoRadio1"/> Tarde<br></br>
 
-            <label htmlFor="radio_sales_person">Vendedor</label><br></br>
-            <label>
+            <label>Vendedor</label><br></br>
                 <input type="radio" id="opcaoRadio" value="Terezinha" name="opcaoRadio" class="radio-group"/> Terezinha
-            </label>
-            <label>
                 <input type="radio" id="opcaoRadio" value="Eliane" name="opcaoRadio"class="radio-group"/> Eliane
-            </label>
-            <label>
                 <input type="radio" id="opcaoRadio" value="Elcir" name="opcaoRadio"class="radio-group"/> Elcir
-            </label>
-            <label>
                 <input type="radio" id="opcaoRadio" value="Carlos Ciotta" name="opcaoRadio"class="radio-group"/> Carlos Ciotta
-            </label>
-            <label>
                 <input type="radio" id="opcaoRadio" value="Evandro" name="opcaoRadio"class="radio-group"/> Evandro
-            </label>
-            <label>
-                <input type="radio" id="opcaoRadio" value="Carlos Eduardo" name="opcaoRadio"class="radio-group"/> Carlos Eduardo
-            </label><br></br>
+                <input type="radio" id="opcaoRadio" value="Carlos Eduardo" name="opcaoRadio"class="radio-group"/> Carlos Eduardo<br></br>
 
             <label htmlFor="datePicker">Data de Entrega</label><br></br>
             <input type="date" id="datePicker" /><br />
