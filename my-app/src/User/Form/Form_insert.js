@@ -1,91 +1,71 @@
 import React, { useState } from 'react';
-import '../Form/Form_style.css';
+import { Container, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Radio, RadioGroup, Button, Stack,Grid2, Box, FormLabel } from '@mui/material';
+import { LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-function Form_insert(){
-    const [isOpen, setIsOpen] = useState(false);
+function Form_insert() {
+  const [text1, setText1] = useState('');
+  const [text2, setText2] = useState('');
+  const [text3, setText3] = useState('');
+  const [selectValue, setSelectValue] = useState('');
+  const [radioValue1, setRadioValue1] = useState('option1');
+  const [radioValue2, setRadioValue2] = useState('optionA');
+  const [date, setDate] = useState(null);
 
-  const openModal = () => {
-    var button_open = document.getElementById('openModal');
-    button_open.style.display = 'none'
-    setIsOpen(true);
-
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-    var button_open = document.getElementById('openModal');
-    button_open.style.display = 'block'
-  };
-
+  const handleTextChange1 = (event) => setText1(event.target.value);
+  const handleTextChange2 = (event) => setText2(event.target.value);
+  const handleTextChange3 = (event) => setText3(event.target.value);
+  const handleSelectChange = (event) => setSelectValue(event.target.value);
+  const handleRadioChange1 = (event) => setRadioValue1(event.target.value);
+  const handleRadioChange2 = (event) => setRadioValue2(event.target.value);
+  const handleDateChange = (newValue) => setDate(newValue);
   return (
-    <div>
-      <button id="openModal" onClick={openModal} style={{display:'block'}}>Open the modal</button>
+    <Container>
+        <Stack direction="column" spacing={4} sx={{justifyContent: "center",alignItems: "flex-start",}}>
+        
+        <FormControl fullWidth>
+          <TextField label="Número do Pedido" id="id_entrega" margin = "dense" value={text1} onChange={handleTextChange1}/>
+          <TextField label="Nome do Cliente" id="id_entrega" margin = "dense" value={text2} onChange={handleTextChange2}/>
+        </FormControl>
+        
+        <FormControl fullWidth>
+          <InputLabel>Bairro</InputLabel>
+          <Select value={selectValue} onChange={handleSelectChange} label="Select" >
+          <MenuItem value="option1">Option 1</MenuItem>
+          <MenuItem value="option2">Option 2</MenuItem>
+          <MenuItem value="option3">Option 3</MenuItem>
+        </Select>
+        </FormControl>
 
-      {isOpen && (
-        <div className="modal">
-          <div className="container">
-            <button id="closeModal" className="modal-close-btn" onClick={closeModal}>Close</button>
-            <label htmlFor="id_input">Número do Pedido:</label>
-            <input type="text" id="id_input"/>
+        <FormControl component="fieldset">
+        <FormLabel >Período de Entrega</FormLabel>
+        <RadioGroup value={radioValue2} onChange={handleRadioChange2}>
+          <FormControlLabel value="optionA" control={<Radio />} label="Radio A" />
+          <FormControlLabel value="optionB" control={<Radio />} label="Radio B" />
+        </RadioGroup>
+        </FormControl>
 
-            <label htmlFor="nome_input">Nome do Cliente:</label>
-            <input type="text" id="nome_input" />
+        <FormControl component="fieldset">
+        <FormLabel >Vendedor</FormLabel>
+        <RadioGroup value={radioValue1} onChange={handleRadioChange1}>
+          <FormControlLabel value="option1" control={<Radio />} label="Radio 1" />
+          <FormControlLabel value="option2" control={<Radio />} label="Radio 2" />
+          <FormControlLabel value="option3" control={<Radio />} label="Radio 3" />
+        </RadioGroup>
+        </FormControl>
 
-            <label htmlFor="cmbOpcoes">Bairro:</label>
-            <select id="cmbOpcoes">
-                <option value="opcao1">Selecione o Bairro</option>
-                <option value="Esplanada">Esplanada</option>
-                <option value="Palmital">Palmital</option>
-                <option value="São Vendelino">São Vendelino</option>
-                <option value="Agua Amarela">Agua Amarela</option>
-                <option value="Seminário">Seminário</option>
-                <option value="Quedas do Palmital">Quedas do Palmital</option>
-                <option value="Universitário">Universitário</option>
-                <option value="Linha das Palmeira">Linha das Palmeira</option>
-                <option value="Linha São Rafael">Linha São Rafael</option>
-                <option value="Lajeado Veríssimo">Lajeado Veríssimo</option>
-                <option value="Linha São Francisco">Linha São Francisco</option>
-                <option value="Linha Pequena">Linha Pequena</option>
-                <option value="Dom José Gomes">Dom José Gomes</option>
-                <option value="Aldeia Indígena Condá">Aldeia Indígena Condá</option>
-                <option value="Santa Maria">Santa Maria</option>
-                <option value="Santo Antônio">Santo Antônio</option>
-                <option value="Saic">Saic</option>
-                <option value="Maria Goretti">Maria Goretti</option>
-                <option value="Jardim Itália">Jardim Itália</option>
-                <option value="São Pedro">São Pedro</option>
-                <option value="Efapi">Efapi</option>
-                <option value="São Cristóvão">São Cristóvão</option>
-                <option value="Trevo">Trevo</option>
-                <option value="Passo dos Fortes">Passo dos Fortes</option>
-                <option value="Pinheirinho">Pinheirinho</option>
-                <option value="Expoente">Expoente</option>
-                <option value="Monte Castelo">Monte Castelo</option>
-                <option value="Cordilheira Alta">Cordilheira Alta</option>
-            </select><br></br>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DatePicker label="Data de Entrega"/>
+        </LocalizationProvider>
 
-            <label>Horário de Entrega</label><br></br>
-                <input type="radio" id="radOpcao" value="Manhã" name="opcaoRadio1"/> Manhã
-                <input type="radio" id="radOpcao" value = "Tarde" name="opcaoRadio1"/> Tarde<br></br>
+        <FormControl fullWidth>
+        <TextField label="Observações (Opcional)" id="id_entrega" margin = "dense" value={text3} onChange={handleTextChange3}/>
+        </FormControl>
 
-            <label>Vendedor</label><br></br>
-                <input type="radio" id="opcaoRadio" value="Terezinha" name="opcaoRadio" class="radio-group"/> Terezinha
-                <input type="radio" id="opcaoRadio" value="Eliane" name="opcaoRadio"class="radio-group"/> Eliane
-                <input type="radio" id="opcaoRadio" value="Elcir" name="opcaoRadio"class="radio-group"/> Elcir
-                <input type="radio" id="opcaoRadio" value="Carlos Ciotta" name="opcaoRadio"class="radio-group"/> Carlos Ciotta
-                <input type="radio" id="opcaoRadio" value="Evandro" name="opcaoRadio"class="radio-group"/> Evandro
-                <input type="radio" id="opcaoRadio" value="Carlos Eduardo" name="opcaoRadio"class="radio-group"/> Carlos Eduardo<br></br>
-
-            <label htmlFor="datePicker">Data de Entrega</label><br></br>
-            <input type="date" id="datePicker" /><br />
-            <label htmlFor="observacao_input">Observações (opcional):</label>
-            <input type="text" id="observacao_input"/>
-
-            <button id="enviarBtn" className="button" style={{ float: 'right' }}>Enviar Entrega</button>
-          </div>
-        </div>
-      )}
-    </div>
+        <Button variant="contained" color="primary">Cadastrar Entrega</Button>
+        </Stack>
+    </Container>
   );
 }
 

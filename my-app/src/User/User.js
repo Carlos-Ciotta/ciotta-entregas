@@ -1,61 +1,20 @@
-import '../User/User_style.css';
 import React from 'react';
+import { Container, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Radio, RadioGroup, Button, Stack,Grid2, Box, FormLabel } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 
 function User(){
     return(
-        <body>
-            <div className='top_header'>
-                <img src='/Logo horizontal.png'/>
-                <button className="button_help">Ajuda</button>
-            </div>
-            <div className='table_container'>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Nome Cliente</th>
-                        <th>Bairro</th>
-                        <th>Situação</th>
-                        <th>Data Entrega</th>
-                        <th>Hora Entrega</th>
-                        <th>Observação</th>
-                        <th>Vendedor</th>
-                    </tr>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Nome Cliente</th>
-                        <th>Bairro</th>
-                        <th>Situação</th>
-                        <th>Data Entrega</th>
-                        <th>Hora Entrega</th>
-                        <th>Observação</th>
-                        <th>Vendedor</th>
-                    </tr>
-                    <tr>
-                        <th>Pedido</th>
-                        <th>Nome Cliente</th>
-                        <th>Bairro</th>
-                        <th>Situação</th>
-                        <th>Data Entrega</th>
-                        <th>Hora Entrega</th>
-                        <th>Observação</th>
-                        <th>Vendedor</th>
-                    </tr>
-                </thead>
-                <tbody id="tabelaBody">
-                    {/* Aqui você pode adicionar as linhas da tabela dinamicamente, se necessário */}
-                </tbody>
-            </table>
-            </div>
+        <Container>
+            <ThemeProvider theme={{palette: {primary: {main: '#007FFF',dark: '#0066CC',},},}}>
+            <Box sx={{width: 100,height: 100,borderRadius: 1,bgcolor: 'primary.main','&:hover': {bgcolor: 'primary.dark',},}}>
             
-            <div className='widgets_container'>
-                <button>Inserir Entrega</button><br></br>
-                <button>Atualizar Entrega</button><br></br>
-                <button>Ver Entregues</button><br></br>
-                <p>Previsão Retorno Caminhões</p>
-            </div>
-        </body>
-        
+            </Box>
+            </ThemeProvider>
+            
+            <Stack>
+
+            </Stack>
+        </Container>
     );
 }
 export default User;
