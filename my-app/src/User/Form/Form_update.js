@@ -63,10 +63,10 @@ function Form_update() {
         <TextField label="Observações (Opcional)" id="id_entrega" margin = "dense" value={text3} onChange={handleTextChange3}/>
         </FormControl>
 
-        <Grid2 container spacing={110}>
-            <Button variant="contained" color="primary">Alterar Entrega</Button>
-            <Button variant="contained" color="primary">Voltar</Button>
-        </Grid2>
+        <Stack direction="row" sx={{justifyContent: "space-evenly",alignItems: "center",}}>
+            <Button variant="contained" color="primary" >Alterar Entrega</Button>
+            <Button variant="contained" color="primary" >Voltar</Button>
+        </Stack>
         </Stack>
     </Container>
   );
