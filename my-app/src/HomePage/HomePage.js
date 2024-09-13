@@ -1,4 +1,3 @@
-import '../HomePage/HomePage_style.css';
 import React from 'react';
 
 function HomePage() {

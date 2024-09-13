@@ -1,81 +1,50 @@
 import React, { useState } from 'react';
-import { Container, TextField, FormControl, InputLabel, Select, MenuItem, FormControlLabel, Radio, RadioGroup, Button, Stack,Grid2, Box, FormLabel } from '@mui/material';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import Form_insert from './Form/Form_insert';
-import Form_update from './Form/Form_update';
+import { Container, Button, Stack } from '@mui/material';
+import FormInsert from './Form/FormInsert';
+import FormUpdate from './Form/FormUpdate';
+import FormStatus from './Form/FormStatus';
+import TableEntregues from './Table/TableEntregues';
+import TableUser from './Table/TableUser';
+import Header from './Header'
 
 function User(){
-    function createData(name, calories, fat, carbs, protein) {
-        return { name, calories, fat, carbs, protein };
-      }
-      
-      const rows = [
-        createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-        createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-        createData('Eclair', 262, 16.0, 24, 6.0),
-        createData('Cupcake', 305, 3.7, 67, 4.3),
-        createData('Gingerbread', 356, 16.0, 49, 3.9),
-      ];
-      const [ formType, setFormType] = useState(null);
+      const [openInsert, setOpenInsert] = useState(false);
+      const handleOpenInsert = () => setOpenInsert(true);
+      const handleCloseInsert = () => setOpenInsert(false);
 
-  const handleButtonClick = (type) => {
-    setFormType(type);
-  };
+      const [openUpdate, setOpenUpdate] = useState(false);
+      const handleOpenUpdate = () => setOpenUpdate(true);
+      const handleCloseUpdate = () => setOpenUpdate(false);
 
-  const handleCloseForm = () => {
-    setFormType(null);
-  };
+      const [openStatus, setOpenStatus] = useState(false);
+      const handleOpenStatus = () => setOpenStatus(true);
+      const handleCloseStatus = () => setOpenStatus(false);
+
+      const [openTEntregues, setOpenTEntregues] = useState(false);
+      const handleOpenTEntregues = () => setOpenTEntregues(true);
+      const handleCloseTEntregues = () => setOpenTEntregues(false);
+
     return(
-        <Container sx={{
-            width: '100%', // Ocupa toda a largura disponível
-            maxWidth: 'none', // Remove qualquer largura máxima do Container
-            padding: 2, // Adiciona padding interno ao container
-          }}>
-            
-            
-            <Stack direction="row" spacing= {2} sx={{justifyContent: "space-evenly",alignItems: "center",}} >
-                
-            {!formType ? (<div><Button variant="contained" color="primary" onClick={handleButtonClick('Form_insert')}>Cadastrar Entrega</Button> 
-            <Button variant="contained" color="primary" onClick={handleButtonClick('Form_update')}>Alterar Entrega</Button></div>) : (<Form_insert onClose={handleCloseForm} />)>(<Form_update onClose={handleCloseForm} />)}
-            </Stack>
+<div style={{backgroundColor: '#323232'}}>
+      <Header></Header>
 
-            <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+      <Stack direction="row" spacing= {2} sx={{justifyContent: "space-evenly",alignItems: "center", marginTop:10, marginBottom:20}} >
+      <Button onClick={handleOpenInsert}>Cadastrar Entrega</Button>
+      <Button onClick={handleOpenStatus}>Verificar Status</Button>
+      <Button onClick={handleOpenUpdate}>Atualizar Entrega</Button>
+      <Button onClick={handleOpenTEntregues}>Ver Entregues</Button>
+      </Stack>
 
-        </Container>
+      <FormInsert open={openInsert} handleClose={handleCloseInsert}></FormInsert>
+      <FormUpdate open={openUpdate} handleClose={handleCloseUpdate}></FormUpdate>
+      <FormStatus open={openStatus} handleClose={handleCloseStatus}></FormStatus>
+      <TableEntregues open={openTEntregues} handleClose={handleCloseTEntregues}></TableEntregues>
+      <Container>
+      <TableUser></TableUser>
+      </Container>
+      
+      </div>
     );
+    
 }
 export default User;
